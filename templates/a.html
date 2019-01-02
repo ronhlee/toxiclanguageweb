@@ -46,7 +46,7 @@
         $('#btn').toggle();
         $('#spinner').toggle();
         $.ajax({
-            url: "http://127.0.0.1:5000/api",
+            url: "http://0.0.0.0:8080/api",
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(input),
