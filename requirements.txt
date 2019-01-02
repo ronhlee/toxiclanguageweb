@@ -1,0 +1,7 @@
+-f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+asyncio
+flask
+flask-cors
+aiohttp
+torch_nightly
+fastai
