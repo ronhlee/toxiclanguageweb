@@ -1,6 +1,7 @@
 
 
 <head>
+    <title>Is the Language Toxic?</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="custom.css">-->
@@ -10,7 +11,14 @@
 <body>
     <div class="container col-lg-6">
         <div style="padding-bottom: 0.5cm">
+
             <div class="card text-center bg-light">
+                <div class="card-header text-center">
+                    <div class="d-flex align-items-center">
+                        <h5 class="mx-auto w-100">Is the Language Toxic?</h5>
+                        <i class="fa fa-question-circle ml-auto"></i>
+                    </div>
+                </div>
                 <div class="card-body" style="padding-bottom: 0.2cm">
                     <input class="card-title form-control" type="text" id="input" name="input" placeholder="Input sentence"/>
                     <button class="card-text btn btn-outline-primary" id="btn">Foul?</button>
@@ -21,8 +29,8 @@
                 </div>
                 <div class="card-footer bg-white">
                     <pre class="card-text api-pre" style="padding-bottom: 0.2cm">
-                        <div class="item" id="api_input">I love Paris </div>
-                        <div class="item" id="api_output">0 0   B-LOC</div>
+                        <div class="item" id="api_input">I love </div>
+                        <div class="item" id="api_output">No Foul</div>
                     </pre>
                 </div>
             </div>
