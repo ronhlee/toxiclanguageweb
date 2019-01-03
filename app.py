@@ -33,10 +33,6 @@ async def setup_learner():
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
     await download_file(train_ids_url, path/'models'/ f'train_ids.npy')
     await download_file(valid_ids_url, path/'models'/f'valid_ids.npy')
-    # data_bunch = ImageDataBunch.single_from_classes(path, classes,
-    #     tfms=get_transforms(), size=150).normalize(imagenet_stats)
-    # learn = create_cnn(data_bunch, models.resnet34, pretrained=False)
-    # learn.load(model_file_name)
     empty_data = TextClasDataBunch.load(path, 'models')
     learn = text_classifier_learner(empty_data)
     learn.load(model_file_name, with_opt=False)
@@ -70,7 +66,7 @@ def api():
 
 @app.route('/')
 def index():
-    return render_template('a.html')
+    return render_template('b.html')
     # return "Index API"
 
 

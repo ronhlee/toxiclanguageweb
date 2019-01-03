@@ -1,0 +1,108 @@
+<html>
+<head>
+	<title>Is the Language Toxic?</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+<!--===============================================================================================-->
+</head>
+
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<a href="/"><img height="42" width="42" src="static/images/25694.png" ></a>
+			<span class="contact100-form-title">Is the Language Toxic?</span>
+
+			<input class="card-title form-control" type="text" id="input" name="input" placeholder="Input sentence"/>
+			<span class="focus-input100"></span>
+			<!--<button class="card-text btn btn-outline-primary" id="btn">Foul?</button>-->
+			<div class="container-contact100-form-btn">
+				<div class="wrap-contact100-form-btn">
+					<div class="contact100-form-bgbtn"></div>
+					<button id = "btn" class="contact100-form-btn">
+						<span>
+							Analyze Text
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="item"><i>Input:</i></div>
+			<div class="wrap-input100 validate-input">
+				<pre class="contact100-form">
+					<div class="item" id="api_input">I love </div>
+				</pre>
+			</div>
+			<div class="item"><i>Result:</i></div>
+			<div class="wrap-input100 validate-input">
+				<pre class="contact100-form">
+					<div class="item" id="api_output">no foul</div>
+				</pre>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+    function api_call(input) {
+        // hide button and make the spinner appear
+        $('#btn').toggle();
+        $('#spinner').toggle();
+        $.ajax({
+            url: "https://toxiclanguageweb.appspot.com/api",
+            <!--url: "http://127.0.0.1:5000/api",-->
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(input),
+            success: function( data, textStatus, jQxhr ){
+                // toggle the spinner and button
+                $('#btn').toggle();
+                $('#spinner').toggle();
+                // fill the html for answer
+                $('#api_input').html( data.input );
+                $('#api_output').html( data.output );
+                $("#input").val("");
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                $('#btn').toggle();
+                $('#spinner').toggle();
+                $('#api_input').html( "Sorry, the server is asleep..." );
+                $('#api_output').html( "Try again in a moment!" );
+                console.log( errorThrown );
+            },
+            timeout: 3000 // sets timeout to 10 seconds
+        });
+    }
+    $( document ).ready(function() {
+        // request when clicking on the button
+        $('#btn').click(function() {
+            // get the input data
+            var input = $("#input").val();
+            api_call(input);
+            <!--input = "";-->
+    });
+    });
+</script>
+</html>

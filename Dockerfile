@@ -10,6 +10,8 @@ COPY models models/
 
 COPY templates templates/
 
+COPY static static/
+
 ADD app.py /
 
 EXPOSE 8080
