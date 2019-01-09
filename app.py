@@ -57,7 +57,7 @@ def api():
     # output_data = model_api(input_data)
     # get predictions
     prediction, _, losses = learn.predict(str(input))
-    output = "FOUL!!" if prediction.obj == '1' else "no foul"
+    output = "FOUL!!" if prediction.obj == '1' else "Not Foul"
     app.logger.info("api_output: " + str(output))
     data = {'input': input, 'output': output}
     response = jsonify(data)
